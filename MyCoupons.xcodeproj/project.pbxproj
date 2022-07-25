@@ -7,28 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB4B567C288ECBB30081C977 /* Coupon.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4B567B288ECBB30081C977 /* Coupon.m */; };
 		EBB2E1B8288EC261008D5681 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB2E1B7288EC261008D5681 /* AppDelegate.m */; };
 		EBB2E1BB288EC261008D5681 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB2E1BA288EC261008D5681 /* SceneDelegate.m */; };
-		EBB2E1BE288EC261008D5681 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB2E1BD288EC261008D5681 /* ViewController.m */; };
 		EBB2E1C1288EC261008D5681 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBB2E1BF288EC261008D5681 /* Main.storyboard */; };
 		EBB2E1C3288EC266008D5681 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBB2E1C2288EC266008D5681 /* Assets.xcassets */; };
 		EBB2E1C6288EC266008D5681 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBB2E1C4288EC266008D5681 /* LaunchScreen.storyboard */; };
 		EBB2E1C9288EC266008D5681 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB2E1C8288EC266008D5681 /* main.m */; };
+		EBDB9BA8288EF17D00C98FA4 /* CouponListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDB9BA7288EF17D00C98FA4 /* CouponListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB4B567A288ECBB30081C977 /* Coupon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Coupon.h; sourceTree = "<group>"; };
+		EB4B567B288ECBB30081C977 /* Coupon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Coupon.m; sourceTree = "<group>"; };
 		EBB2E1B3288EC261008D5681 /* MyCoupons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCoupons.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBB2E1B6288EC261008D5681 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EBB2E1B7288EC261008D5681 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		EBB2E1B9288EC261008D5681 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		EBB2E1BA288EC261008D5681 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		EBB2E1BC288EC261008D5681 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		EBB2E1BD288EC261008D5681 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		EBB2E1C0288EC261008D5681 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBB2E1C2288EC266008D5681 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBB2E1C5288EC266008D5681 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EBB2E1C7288EC266008D5681 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBB2E1C8288EC266008D5681 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EBDB9BA6288EF17D00C98FA4 /* CouponListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CouponListViewController.h; sourceTree = "<group>"; };
+		EBDB9BA7288EF17D00C98FA4 /* CouponListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CouponListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB4B567D288ECBBD0081C977 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EB4B567A288ECBB30081C977 /* Coupon.h */,
+				EB4B567B288ECBB30081C977 /* Coupon.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		EBB2E1AA288EC261008D5681 = {
 			isa = PBXGroup;
 			children = (
@@ -65,13 +77,14 @@
 				EBB2E1B7288EC261008D5681 /* AppDelegate.m */,
 				EBB2E1B9288EC261008D5681 /* SceneDelegate.h */,
 				EBB2E1BA288EC261008D5681 /* SceneDelegate.m */,
-				EBB2E1BC288EC261008D5681 /* ViewController.h */,
-				EBB2E1BD288EC261008D5681 /* ViewController.m */,
 				EBB2E1BF288EC261008D5681 /* Main.storyboard */,
 				EBB2E1C2288EC266008D5681 /* Assets.xcassets */,
 				EBB2E1C4288EC266008D5681 /* LaunchScreen.storyboard */,
 				EBB2E1C7288EC266008D5681 /* Info.plist */,
 				EBB2E1C8288EC266008D5681 /* main.m */,
+				EB4B567D288ECBBD0081C977 /* Model */,
+				EBDB9BA6288EF17D00C98FA4 /* CouponListViewController.h */,
+				EBDB9BA7288EF17D00C98FA4 /* CouponListViewController.m */,
 			);
 			path = MyCoupons;
 			sourceTree = "<group>";
@@ -146,8 +159,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBB2E1BE288EC261008D5681 /* ViewController.m in Sources */,
+				EBDB9BA8288EF17D00C98FA4 /* CouponListViewController.m in Sources */,
 				EBB2E1B8288EC261008D5681 /* AppDelegate.m in Sources */,
+				EB4B567C288ECBB30081C977 /* Coupon.m in Sources */,
 				EBB2E1C9288EC266008D5681 /* main.m in Sources */,
 				EBB2E1BB288EC261008D5681 /* SceneDelegate.m in Sources */,
 			);
@@ -292,6 +306,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y3GLJB2287;
 				INFOPLIST_FILE = MyCoupons/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +324,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y3GLJB2287;
 				INFOPLIST_FILE = MyCoupons/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

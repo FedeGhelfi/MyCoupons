@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  CouponListViewController.h
 //  MyCoupons
 //
 //  Created by Federico Ghelfi on 25/07/2022.
@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Coupon.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-@property (strong, nonatomic) UIWindow *window;
+NS_ASSUME_NONNULL_BEGIN
+
+@interface CouponListViewController : UIViewController
+
 @end
 
+NS_ASSUME_NONNULL_END
