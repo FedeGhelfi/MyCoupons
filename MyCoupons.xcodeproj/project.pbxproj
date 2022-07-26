@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EB4B567C288ECBB30081C977 /* Coupon.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4B567B288ECBB30081C977 /* Coupon.m */; };
+		EB8CE6CA288FD84D007D4486 /* CouponList.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8CE6C9288FD84D007D4486 /* CouponList.m */; };
 		EBB2E1B8288EC261008D5681 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB2E1B7288EC261008D5681 /* AppDelegate.m */; };
 		EBB2E1BB288EC261008D5681 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB2E1BA288EC261008D5681 /* SceneDelegate.m */; };
 		EBB2E1C1288EC261008D5681 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBB2E1BF288EC261008D5681 /* Main.storyboard */; };
@@ -20,6 +21,8 @@
 /* Begin PBXFileReference section */
 		EB4B567A288ECBB30081C977 /* Coupon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Coupon.h; sourceTree = "<group>"; };
 		EB4B567B288ECBB30081C977 /* Coupon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Coupon.m; sourceTree = "<group>"; };
+		EB8CE6C8288FD84D007D4486 /* CouponList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CouponList.h; sourceTree = "<group>"; };
+		EB8CE6C9288FD84D007D4486 /* CouponList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CouponList.m; sourceTree = "<group>"; };
 		EBB2E1B3288EC261008D5681 /* MyCoupons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCoupons.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBB2E1B6288EC261008D5681 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EBB2E1B7288EC261008D5681 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -50,6 +53,8 @@
 			children = (
 				EB4B567A288ECBB30081C977 /* Coupon.h */,
 				EB4B567B288ECBB30081C977 /* Coupon.m */,
+				EB8CE6C8288FD84D007D4486 /* CouponList.h */,
+				EB8CE6C9288FD84D007D4486 /* CouponList.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -164,6 +169,7 @@
 				EB4B567C288ECBB30081C977 /* Coupon.m in Sources */,
 				EBB2E1C9288EC266008D5681 /* main.m in Sources */,
 				EBB2E1BB288EC261008D5681 /* SceneDelegate.m in Sources */,
+				EB8CE6CA288FD84D007D4486 /* CouponList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

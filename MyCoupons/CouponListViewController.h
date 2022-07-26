@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Coupon.h"
+#import "CouponList.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
