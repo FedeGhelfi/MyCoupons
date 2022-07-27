@@ -12,12 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Coupon : NSObject
 
--(instancetype) initWithCompanyName:(NSString *)companyName
+-(instancetype) initWithCouponName:(NSString *)couponName
+                CompanyName:(NSString *)companyName
                 code:(NSString *)code
                 codeFormat:(NSString *)codeFormat;
 
 -(NSString *) displayCoupon;
 
+@property(nonatomic, strong) NSString *couponName; // identificativo del coupon
 @property(nonatomic, strong) NSString *companyName;
 @property(nonatomic, strong) NSString *code;
 @property(nonatomic, strong) NSString *codeFormat;

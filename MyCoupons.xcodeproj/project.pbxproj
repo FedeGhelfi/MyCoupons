@@ -17,6 +17,7 @@
 		EBB2E1C3288EC266008D5681 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBB2E1C2288EC266008D5681 /* Assets.xcassets */; };
 		EBB2E1C6288EC266008D5681 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBB2E1C4288EC266008D5681 /* LaunchScreen.storyboard */; };
 		EBB2E1C9288EC266008D5681 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB2E1C8288EC266008D5681 /* main.m */; };
+		EBF28C9428914662007A4466 /* CouponDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF28C9328914662007A4466 /* CouponDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		EBB2E1C5288EC266008D5681 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EBB2E1C7288EC266008D5681 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBB2E1C8288EC266008D5681 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EBF28C9228914662007A4466 /* CouponDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CouponDetailViewController.h; sourceTree = "<group>"; };
+		EBF28C9328914662007A4466 /* CouponDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CouponDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +98,8 @@
 				EB18F2222890426B00E76750 /* CouponListTableViewController.m */,
 				EB18F22728904D3700E76750 /* AddCouponViewController.h */,
 				EB18F22828904D3700E76750 /* AddCouponViewController.m */,
+				EBF28C9228914662007A4466 /* CouponDetailViewController.h */,
+				EBF28C9328914662007A4466 /* CouponDetailViewController.m */,
 			);
 			path = MyCoupons;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 				EB4B567C288ECBB30081C977 /* Coupon.m in Sources */,
 				EBB2E1C9288EC266008D5681 /* main.m in Sources */,
 				EB18F22928904D3700E76750 /* AddCouponViewController.m in Sources */,
+				EBF28C9428914662007A4466 /* CouponDetailViewController.m in Sources */,
 				EBB2E1BB288EC261008D5681 /* SceneDelegate.m in Sources */,
 				EB8CE6CA288FD84D007D4486 /* CouponList.m in Sources */,
 			);

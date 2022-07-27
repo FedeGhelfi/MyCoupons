@@ -11,11 +11,12 @@
 @implementation Coupon
 
 // costruttore coupon
-- (instancetype)initWithCompanyName:(NSString *)companyName
+- (instancetype)initWithCouponName:(NSString *)couponName
+                       CompanyName:(NSString *)companyName
                               code:(NSString *)code
-                        codeFormat:(NSString *)codeFormat{
-    
+                        codeFormat:(NSString *)codeFormat {
     if (self = [super init]){
+        _couponName = [couponName copy];
         _companyName = [companyName copy];
         _code = [code copy];
         _codeFormat = [codeFormat copy];

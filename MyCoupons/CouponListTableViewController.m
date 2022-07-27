@@ -7,6 +7,7 @@
 //
 
 #import "CouponListTableViewController.h"
+#import "CouponDetailViewController.h"
 
 @interface CouponListTableViewController ()
 
@@ -21,14 +22,15 @@
     
     self.title = @"My Coupons";
     
+    // alloco la lista di coupon
     self.coupons = [[CouponList alloc] init];
     
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    // provo ad aggiungere alla lista
+    [self.coupons addCoupon:[[Coupon alloc] initWithCouponName:@"Biscotti" CompanyName:@"Conad" code:@"56839G" codeFormat:@"QRCODE"]];
+    [self.coupons addCoupon:[[Coupon alloc] initWithCouponName:@"Detersivi" CompanyName:@"Tigotà" code:@"FF5660" codeFormat:@"BARCODE"]];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
 }
 
 #pragma mark - Table view data source
@@ -41,15 +43,35 @@
     return self.coupons.size;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CouponCell" forIndexPath:indexPath];
     
+    Coupon *c = [self.coupons getCoupon:indexPath.row];
     // Configure the cell...
     
+    /*
+     PROVE DI MODIFICA STRINGHE
+     
+    NSDictionary *attributes = @{
+        NSFontAttributeName:[UIFont fontWithName:@"Arial" size:16.0],
+        NSForegroundColorAttributeName:[UIColor redColor]
+    };
+    
+    NSAttributedString *text = [[NSAttributedString alloc] initWithString:c.companyName attributes:attributes];
+    */
+    
+    cell.textLabel.textColor = [UIColor purpleColor]; // testo colorato
+    
+    // cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+    
+    cell.textLabel.font = [UIFont fontWithName:@"Arial" size:18.0]; // modifico il font
+    cell.textLabel.text = c.couponName;
+    cell.indentationLevel = 2;
+
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -85,14 +107,32 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    // check sull'identifier della segue
+    if([segue.identifier isEqualToString:@"SegueForDetailCoupon"]){
+        
+        // check sul vc di destinazione
+        if([segue.destinationViewController isKindOfClass:[CouponDetailViewController class]]){
+            
+            CouponDetailViewController *cd = (CouponDetailViewController *)segue.destinationViewController;
+            
+            // index path della cella selezionata
+            NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+            
+            Coupon *c = [self.coupons getCoupon:indexPath.row];
+            
+            cd.coupon = c;
+            
+        }
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end
