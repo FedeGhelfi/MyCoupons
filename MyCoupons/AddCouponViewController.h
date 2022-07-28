@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AddCouponViewController : UIViewController
+@interface AddCouponViewController : UIViewController<UITextFieldDelegate>
 
 @end
 
