@@ -30,7 +30,24 @@
     [self.coupons addCoupon:[[Coupon alloc] initWithCouponName:@"Detersivi" CompanyName:@"Tigotà" code:@"FF5660" codeFormat:@"BARCODE"]];
     
     
+    // quando verrà inserita una nuova carta verrà inviato un messaggio
+    // che invocherà il metodo corretto
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addNewCoupon) name:@"AddNewCoupon" object:nil];
     
+    // comportamento speculare con la rimozione
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeCoupon) name:@"RemoveCoupon" object:nil];
+}
+
+- (void)addNewCoupon:(NSNotification *)notification {
+    
+    // aggiungi coupon notificato alla lista
+    
+}
+
+
+- (void)removeCoupon:(NSNotification *)notification {
+    
+    // rimuovi coupon notificato dalla lista
 }
 
 #pragma mark - Table view data source
@@ -73,39 +90,7 @@
 }
 
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 
 #pragma mark - Navigation

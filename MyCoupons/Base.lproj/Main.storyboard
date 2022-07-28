@@ -43,7 +43,13 @@
                             <outlet property="delegate" destination="G2K-7J-URf" id="JFI-Dc-qEG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="sXZ-tY-REO"/>
+                    <navigationItem key="navigationItem" id="sXZ-tY-REO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="PU2-4C-exy">
+                            <connections>
+                                <segue destination="WOQ-F5-8EN" kind="show" id="of2-kq-ccN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hfq-sx-xY4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -103,6 +109,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="dqE-PQ-PhW"/>
                     </view>
+                    <navigationItem key="navigationItem" id="hsV-as-WlY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TJV-Jm-97n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
