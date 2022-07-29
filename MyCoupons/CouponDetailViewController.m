@@ -28,6 +28,16 @@
     self.LabelCodeFormat.text = self.coupon.codeFormat;
 }
 
+- (IBAction)removeCoupon:(id)sender {
+    
+    NSDictionary *info = @{@"RemoveCoupon":self.coupon};
+    
+    // invio notifica
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RemoveCoupon" object:self userInfo:info];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 /*
 #pragma mark - Navigation
 

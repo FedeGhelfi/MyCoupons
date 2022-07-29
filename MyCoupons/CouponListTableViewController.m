@@ -51,7 +51,10 @@
 
 - (void)removeCoupon:(NSNotification *)notification {
     
-    // rimuovi coupon notificato dalla lista
+    [self.coupons removeCoupon:[notification.userInfo objectForKey:@"RemoveCoupon"]];
+    NSLog(@"Size: %ld", self.coupons.size);
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -69,7 +72,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CouponCell" forIndexPath:indexPath];
     
     Coupon *c = [self.coupons getCoupon:indexPath.row];
-    // Configure the cell...
     
     /*
      PROVE DI MODIFICA STRINGHE
@@ -93,13 +95,9 @@
     return cell;
 }
 
-
-
-
-
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+// segue verso il view controller di dettaglio
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     // check sull'identifier della segue
@@ -113,14 +111,12 @@
             // index path della cella selezionata
             NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
             
+            // ottengo il coupon corrispondente alla cella premuta per passarlo al prossimo vc
             Coupon *c = [self.coupons getCoupon:indexPath.row];
-            
+        
             cd.coupon = c;
-            
         }
     }
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
 
 
