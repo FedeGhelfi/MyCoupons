@@ -25,22 +25,26 @@
     // alloco la lista di coupon
     self.coupons = [[CouponList alloc] init];
     
-    // provo ad aggiungere alla lista
+    // provo ad aggiungere alla lista: FUNZIONA
+    /*
     [self.coupons addCoupon:[[Coupon alloc] initWithCouponName:@"Biscotti" CompanyName:@"Conad" code:@"56839G" codeFormat:@"QRCODE"]];
     [self.coupons addCoupon:[[Coupon alloc] initWithCouponName:@"Detersivi" CompanyName:@"Tigotà" code:@"FF5660" codeFormat:@"BARCODE"]];
-    
+    */
     
     // quando verrà inserita una nuova carta verrà inviato un messaggio
     // che invocherà il metodo corretto
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addNewCoupon) name:@"AddNewCoupon" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addNewCoupon:) name:@"AddNewCoupon" object:nil];
     
     // comportamento speculare con la rimozione
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeCoupon) name:@"RemoveCoupon" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeCoupon:) name:@"RemoveCoupon" object:nil];
 }
 
 - (void)addNewCoupon:(NSNotification *)notification {
     
-    // aggiungi coupon notificato alla lista
+    [self.coupons addCoupon:[notification.userInfo objectForKey:@"AddedCoupon"]];
+    NSLog(@"Size: %ld",self.coupons.size);
+    
+    [self.tableView reloadData];
     
 }
 

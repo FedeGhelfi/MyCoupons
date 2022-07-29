@@ -7,6 +7,7 @@
 //
 
 #import "AddCouponViewController.h"
+#import "Coupon.h"
 
 @interface AddCouponViewController ()
 
@@ -50,6 +51,51 @@
     [textField resignFirstResponder];
     return YES;
 }
+
+// Dopo aver cliccato "Save"
+- (IBAction)addCoupon:(id)sender {
+    
+    /*
+     TODO:
+     
+     controlli sugli input
+     alert
+
+     */
+ 
+    Coupon *newCoupon = [[Coupon alloc]initWithCouponName:self.CouponNameTextField.text CompanyName:self.CompanyNameTextField.text code:self.CodeTextField.text codeFormat:[self whichCodeFormat:self.ChoiceCodeFormat]];
+    
+    // dictionary che contiene dati coupon aggiunto
+    NSDictionary *info = @{@"AddedCoupon":newCoupon};
+    
+    // notifica
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"AddNewCoupon" object:self userInfo:info];
+    
+    NSLog(@"Pressed Save");
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+- (NSString *)whichCodeFormat:(UISegmentedControl *)sc {
+    NSString *string = [[NSString alloc] init];
+    switch(sc.selectedSegmentIndex) {
+        case 0:
+            string = @"QRCODE";
+            break;
+        case 1:
+            string = @"BARCODE";
+            break;
+            
+        default:
+            string = @"";
+            break;
+    }
+    
+    NSLog(@"Scelta: %@", string);
+    return string;
+}
+
 
 /*
 #pragma mark - Navigation

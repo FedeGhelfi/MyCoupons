@@ -165,7 +165,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="dqE-PQ-PhW"/>
                     </view>
-                    <navigationItem key="navigationItem" id="hsV-as-WlY"/>
+                    <navigationItem key="navigationItem" id="hsV-as-WlY">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="MUl-eL-rZC">
+                            <connections>
+                                <action selector="addCoupon:" destination="WOQ-F5-8EN" id="p04-Um-WtU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="ChoiceCodeFormat" destination="594-Lf-O9T" id="iFv-VS-h0m"/>
                         <outlet property="CodeTextField" destination="mN5-wL-euz" id="8xQ-cL-50o"/>
