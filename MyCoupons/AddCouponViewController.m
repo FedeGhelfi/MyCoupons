@@ -27,7 +27,6 @@
     self.CouponNameTextField.delegate = self;
     self.CompanyNameTextField.delegate = self;
     self.CodeTextField.delegate = self;
-
 }
 
 // chiamato appena prima che che il text field diventi attivo
@@ -37,7 +36,7 @@
     textField.backgroundColor = [UIColor colorWithRed:220.0f/255.0f green:220.0f/255.0f blue:220.0f/255.0f alpha:0.3f];
     return YES;
 }
- 
+  
 // chiamato quando diventa attivo il textfield
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
     NSLog(@"textFieldDidBeginEditing");
@@ -54,23 +53,22 @@
 // Dopo aver cliccato "Save"
 - (IBAction)addCoupon:(id)sender {
     
-    UIAlertController *alert = [self AlertSet];
+    UIAlertController *alert = [self alertSet];
  
     // controllo gli input
-    if ([self ControlTextField:self.CouponNameTextField.text] == NO){
+    if ([self controlTextField:self.CouponNameTextField.text] == NO){
         alert.message = @"Inserisci il nome del coupon";
         [self presentViewController:alert animated:YES completion:nil];
     }
-    else if ([self ControlTextField:self.CompanyNameTextField.text] == NO){
+    else if ([self controlTextField:self.CompanyNameTextField.text] == NO){
         alert.message = @"Inserisci il nome dell'azienda";
         [self presentViewController:alert animated:YES completion:nil];
     }
-    else if ([self ControlTextField:self.CodeTextField.text] == NO){
+    else if ([self controlTextField:self.CodeTextField.text] == NO){
         alert.message = @"Inserisci il codice";
         [self presentViewController:alert animated:YES completion:nil];
     }
     else {
-    
         Coupon *newCoupon = [[Coupon alloc]initWithCouponName:self.CouponNameTextField.text CompanyName:self.CompanyNameTextField.text code:self.CodeTextField.text codeFormat:[self whichCodeFormat:self.ChoiceCodeFormat]];
     
         // dictionary che contiene dati coupon aggiunto
@@ -98,7 +96,6 @@
         case 1:
             string = @"BARCODE";
             break;
-            
         default:
             string = @"";
             break;
@@ -109,7 +106,7 @@
 }
 
 // controllo sugli input
-- (BOOL) ControlTextField:(NSString *)string{
+- (BOOL) controlTextField:(NSString *)string{
     if (string.length > 0)
         return YES;
     else
@@ -118,7 +115,7 @@
 
 
 // Configurazione dell'alert
-- (UIAlertController *)AlertSet{
+- (UIAlertController *)alertSet{
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Attenzione" message:@"prova" preferredStyle:UIAlertControllerStyleAlert];
    
@@ -127,5 +124,6 @@
     [alert addAction:defaultAction];
     return alert;
 }
+
 
 @end

@@ -12,7 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *LabelCompanyName;
 @property (weak, nonatomic) IBOutlet UILabel *LabelCode;
-@property (weak, nonatomic) IBOutlet UILabel *LabelCodeFormat;
+@property (weak, nonatomic) IBOutlet UIImageView *ImageCode;
 
 
 @end
@@ -25,7 +25,21 @@
     self.title = self.coupon.couponName;
     self.LabelCompanyName.text = self.coupon.companyName;
     self.LabelCode.text = self.coupon.code;
-    self.LabelCodeFormat.text = self.coupon.codeFormat;
+    
+    [self printCode];
+}
+
+- (void)printCode {
+    if ([self.coupon.codeFormat isEqualToString:@"BARCODE"]){
+        CIImage *barcode= [self generateBarCode];
+        UIImage *barcodeimage = [[UIImage alloc]initWithCIImage:barcode];
+        self.ImageCode.image = barcodeimage;
+    }
+    else if ([self.coupon.codeFormat isEqualToString:@"QRCODE"]){
+        CIImage *qrcode = [self generateQRCode];
+        UIImage *qrcodeimage = [[UIImage alloc] initWithCIImage:qrcode];
+        self.ImageCode.image = qrcodeimage;
+    }
 }
 
 - (IBAction)removeCoupon:(id)sender {
@@ -51,14 +65,27 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+// genera QR CODE
+- (CIImage *)generateQRCode{
+    NSData *data = [self.coupon.code dataUsingEncoding:NSISOLatin1StringEncoding];
+    
+    CIFilter *qrCodeFilter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
+    [qrCodeFilter setValue:data forKey:@"inputMessage"];
+    [qrCodeFilter setValue:@"M" forKey:@"inputCorrectionLevel"];
+    
+    return qrCodeFilter.outputImage;
 }
-*/
+
+
+-(CIImage *)generateBarCode{
+    
+    NSData *data = [self.coupon.code dataUsingEncoding:NSASCIIStringEncoding];
+    CIFilter *barCodeFilter = [CIFilter filterWithName:@"CICode128BarcodeGenerator"];
+    [barCodeFilter setValue:data forKey:@"inputMessage"];
+      [barCodeFilter setValue:[NSNumber numberWithFloat:7.0] forKey:@"inputQuietSpace"];
+    
+    return barCodeFilter.outputImage;
+
+}
 
 @end
