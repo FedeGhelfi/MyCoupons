@@ -46,7 +46,7 @@
                     <navigationItem key="navigationItem" id="sXZ-tY-REO">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="PU2-4C-exy">
                             <connections>
-                                <segue destination="WOQ-F5-8EN" kind="show" id="of2-kq-ccN"/>
+                                <segue destination="N7D-zH-DjE" kind="show" id="YU8-Yr-arH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -104,6 +104,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HDZ-47-gQg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="958" y="923"/>
+        </scene>
+        <!--Choice View Controller-->
+        <scene sceneID="kpl-nX-xGm">
+            <objects>
+                <viewController id="N7D-zH-DjE" customClass="ChoiceViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BKi-Db-x4h">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Genera il coupon dal codice" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p55-TG-4zO">
+                                <rect key="frame" x="48" y="87" width="239" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNL-rA-Mxg">
+                                <rect key="frame" x="126" y="140" width="83" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="GENERA"/>
+                                <connections>
+                                    <segue destination="WOQ-F5-8EN" kind="show" id="mcK-0V-47n"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Scansiona un coupon esistente" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6J-ZH-M2q">
+                                <rect key="frame" x="41" y="378" width="252" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLP-XG-vHy">
+                                <rect key="frame" x="116" y="421" width="103" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="SCANSIONA"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="oppure..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCb-4X-coW">
+                                <rect key="frame" x="126" y="266" width="83" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="n5u-ka-lsn"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ndl-cX-r3x"/>
+                    <connections>
+                        <outlet property="GeneraButton" destination="lNL-rA-Mxg" id="Oq2-4k-PS8"/>
+                        <outlet property="ScansionaButton" destination="SLP-XG-vHy" id="NpQ-39-OpJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="315-y1-ZeN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1837.5" y="113.02816901408451"/>
         </scene>
         <!--Add Coupon View Controller-->
         <scene sceneID="68n-PJ-tka">
@@ -187,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TJV-Jm-97n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1642.5" y="110.91549295774648"/>
+            <point key="canvasLocation" x="2687" y="111"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="p8E-vY-qbi">

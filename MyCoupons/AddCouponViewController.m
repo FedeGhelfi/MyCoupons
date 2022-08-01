@@ -22,8 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
     
     // il view controller diventa il delegate dei text field
     self.CouponNameTextField.delegate = self;
@@ -35,6 +33,7 @@
 // chiamato appena prima che che il text field diventi attivo
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     NSLog(@"textFieldShouldBeginEditing");
+    
     textField.backgroundColor = [UIColor colorWithRed:220.0f/255.0f green:220.0f/255.0f blue:220.0f/255.0f alpha:0.3f];
     return YES;
 }
@@ -55,26 +54,39 @@
 // Dopo aver cliccato "Save"
 - (IBAction)addCoupon:(id)sender {
     
-    /*
-     TODO:
-     
-     controlli sugli input
-     alert
-
-     */
+    UIAlertController *alert = [self AlertSet];
  
-    Coupon *newCoupon = [[Coupon alloc]initWithCouponName:self.CouponNameTextField.text CompanyName:self.CompanyNameTextField.text code:self.CodeTextField.text codeFormat:[self whichCodeFormat:self.ChoiceCodeFormat]];
+    // controllo gli input
+    if ([self ControlTextField:self.CouponNameTextField.text] == NO){
+        alert.message = @"Inserisci il nome del coupon";
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    else if ([self ControlTextField:self.CompanyNameTextField.text] == NO){
+        alert.message = @"Inserisci il nome dell'azienda";
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    else if ([self ControlTextField:self.CodeTextField.text] == NO){
+        alert.message = @"Inserisci il codice";
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    else {
     
-    // dictionary che contiene dati coupon aggiunto
-    NSDictionary *info = @{@"AddedCoupon":newCoupon};
+        Coupon *newCoupon = [[Coupon alloc]initWithCouponName:self.CouponNameTextField.text CompanyName:self.CompanyNameTextField.text code:self.CodeTextField.text codeFormat:[self whichCodeFormat:self.ChoiceCodeFormat]];
     
-    // notifica
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"AddNewCoupon" object:self userInfo:info];
+        // dictionary che contiene dati coupon aggiunto
+        NSDictionary *info = @{@"AddedCoupon":newCoupon};
     
-    NSLog(@"Pressed Save");
+        // notifica di aggiunta coupon
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"AddNewCoupon" object:self userInfo:info];
     
-    [self.navigationController popViewControllerAnimated:YES];
+        NSLog(@"Pressed Save");
     
+        // prendo tutto lo stack dei viewController
+        NSArray *viewcontrollers = [self.navigationController viewControllers];
+    
+        // Ritorno alla lista dei coupon
+        [self.navigationController popToViewController:[viewcontrollers objectAtIndex:0] animated:YES];
+    }
 }
 
 - (NSString *)whichCodeFormat:(UISegmentedControl *)sc {
@@ -96,15 +108,24 @@
     return string;
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+// controllo sugli input
+- (BOOL) ControlTextField:(NSString *)string{
+    if (string.length > 0)
+        return YES;
+    else
+        return NO;
 }
-*/
+
+
+// Configurazione dell'alert
+- (UIAlertController *)AlertSet{
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Attenzione" message:@"prova" preferredStyle:UIAlertControllerStyleAlert];
+   
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Ho capito" style:UIAlertActionStyleDefault handler:nil];
+    
+    [alert addAction:defaultAction];
+    return alert;
+}
 
 @end

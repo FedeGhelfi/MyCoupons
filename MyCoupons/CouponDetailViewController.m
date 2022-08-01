@@ -30,12 +30,25 @@
 
 - (IBAction)removeCoupon:(id)sender {
     
-    NSDictionary *info = @{@"RemoveCoupon":self.coupon};
+    // alert per chiedere conferma di eliminazione
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Attenzione" message:@"Sei sicuro di voler eliminare il coupon?" preferredStyle:UIAlertControllerStyleAlert];
     
-    // invio notifica
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"RemoveCoupon" object:self userInfo:info];
+    // Si: proseguo con eliminazione
+    UIAlertAction *Si = [UIAlertAction actionWithTitle:@"Si" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
     
-    [self.navigationController popViewControllerAnimated:YES];
+        NSDictionary *info = @{@"RemoveCoupon":self.coupon};
+    
+        // invio notifica di rimozione
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RemoveCoupon" object:self userInfo:info];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
+    UIAlertAction *No = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault handler:nil];
+        
+    [alert addAction:Si];
+    [alert addAction:No];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 /*
