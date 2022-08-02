@@ -32,15 +32,33 @@
 - (void)printCode {
     if ([self.coupon.codeFormat isEqualToString:@"BARCODE"]){
         CIImage *barcode= [self generateBarCode];
-        UIImage *barcodeimage = [[UIImage alloc]initWithCIImage:barcode];
+        
+        // aggiusto la scala del barcode per evitare la sfocatura
+        CGFloat scaleX = self.ImageCode.bounds.size.width / barcode.extent.size.width;
+        CGFloat scaleY = self.ImageCode.bounds.size.height / barcode.extent.size.height;
+        CIImage *transformedImage = [barcode imageByApplyingTransform:CGAffineTransformMakeScale(scaleX, scaleY)];
+        
+        UIImage *barcodeimage = [[UIImage alloc]initWithCIImage:transformedImage];
         self.ImageCode.image = barcodeimage;
     }
+    
     else if ([self.coupon.codeFormat isEqualToString:@"QRCODE"]){
         CIImage *qrcode = [self generateQRCode];
-        UIImage *qrcodeimage = [[UIImage alloc] initWithCIImage:qrcode];
-        self.ImageCode.image = qrcodeimage;
+    
+        // aggiusto la scala del QR per evitare la sfocatura
+        CGFloat scaleX = self.ImageCode.bounds.size.width / qrcode.extent.size.width;
+        CGFloat scaleY = self.ImageCode.bounds.size.height / qrcode.extent.size.height;
+        
+        CIImage *transformedImage = [qrcode imageByApplyingTransform:CGAffineTransformMakeScale(scaleX, scaleY)];
+        
+         
+        // converto a UIImage e la setto nella image view
+        UIImage *qrcodeimage = [[UIImage alloc] initWithCIImage:transformedImage];
+        
+         self.ImageCode.image = qrcodeimage;
     }
 }
+
 
 - (IBAction)removeCoupon:(id)sender {
     
@@ -71,7 +89,9 @@
     
     CIFilter *qrCodeFilter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
     [qrCodeFilter setValue:data forKey:@"inputMessage"];
-    [qrCodeFilter setValue:@"M" forKey:@"inputCorrectionLevel"];
+    // error correction rate
+    [qrCodeFilter setValue:@"H" forKey:@"inputCorrectionLevel"];
+    
     
     return qrCodeFilter.outputImage;
 }
