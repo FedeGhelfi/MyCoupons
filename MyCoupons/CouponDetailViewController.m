@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *LabelCompanyName;
 @property (weak, nonatomic) IBOutlet UILabel *LabelCode;
 @property (weak, nonatomic) IBOutlet UIImageView *ImageCode;
+@property (weak, nonatomic) IBOutlet UILabel *LabelDate;
 
 
 @end
@@ -26,7 +27,16 @@
     self.LabelCompanyName.text = self.coupon.companyName;
     self.LabelCode.text = self.coupon.code;
     
-    [self printCode];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+   // dateFormatter.dateFormat = @"yyyy-MM-dd";
+    dateFormatter.dateFormat = @"dd-MM-yyyy";
+    self.LabelDate.text = [dateFormatter stringFromDate:self.coupon.expirationDate];
+    NSLog(@"expiration date: %@",self.coupon.expirationDate);
+    
+   
+     
+     [self printCode];
 }
 
 - (void)printCode {

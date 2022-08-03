@@ -15,7 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(instancetype) initWithCouponName:(NSString *)couponName
                 CompanyName:(NSString *)companyName
                 code:(NSString *)code
-                codeFormat:(NSString *)codeFormat;
+                codeFormat:(NSString *)codeFormat
+                expirationDate:(NSDate *)expirationDate;
 
 -(NSString *) displayCoupon;
 
@@ -23,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) NSString *companyName;
 @property(nonatomic, strong) NSString *code;
 @property(nonatomic, strong) NSString *codeFormat;
+@property(nonatomic, strong) NSDate *expirationDate;
 
 @end
 

@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *CompanyNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *CodeTextField;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *ChoiceCodeFormat;
+@property (weak, nonatomic) IBOutlet UIDatePicker *expirationDatePicker;
 
 @end
 
@@ -43,7 +44,7 @@
 }
 
 // Metodo che fa sparire la tastiera
-- (BOOL) textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
     NSLog(@"TextFieldShouldReturn");
     
     [textField resignFirstResponder];
@@ -69,8 +70,8 @@
         [self presentViewController:alert animated:YES completion:nil];
     }
     else {
-        Coupon *newCoupon = [[Coupon alloc]initWithCouponName:self.CouponNameTextField.text CompanyName:self.CompanyNameTextField.text code:self.CodeTextField.text codeFormat:[self whichCodeFormat:self.ChoiceCodeFormat]];
-    
+        Coupon *newCoupon = [[Coupon alloc]initWithCouponName:self.CouponNameTextField.text CompanyName:self.CompanyNameTextField.text code:self.CodeTextField.text codeFormat:[self whichCodeFormat:self.ChoiceCodeFormat] expirationDate:self.expirationDatePicker.date];
+        
         // dictionary che contiene dati coupon aggiunto
         NSDictionary *info = @{@"AddedCoupon":newCoupon};
     
@@ -106,7 +107,7 @@
 }
 
 // controllo sugli input
-- (BOOL) controlTextField:(NSString *)string{
+- (BOOL)controlTextField:(NSString *)string{
     if (string.length > 0)
         return YES;
     else
@@ -114,7 +115,7 @@
 }
 
 
-// Configurazione dell'alert
+// Configurazione dell'alert standard
 - (UIAlertController *)alertSet{
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Attenzione" message:@"prova" preferredStyle:UIAlertControllerStyleAlert];

@@ -14,12 +14,14 @@
 - (instancetype)initWithCouponName:(NSString *)couponName
                        CompanyName:(NSString *)companyName
                               code:(NSString *)code
-                        codeFormat:(NSString *)codeFormat {
+                        codeFormat:(NSString *)codeFormat
+                        expirationDate:(NSDate *)expirationDate {
     if (self = [super init]){
         _couponName = [couponName copy];
         _companyName = [companyName copy];
         _code = [code copy];
         _codeFormat = [codeFormat copy];
+        _expirationDate = [expirationDate copy];
     }
     
     return self;
