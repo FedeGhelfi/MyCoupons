@@ -16,7 +16,7 @@
 
 @implementation CouponList
 
-- (instancetype) init{
+- (instancetype)init{
     if (self = [super init]){
         _list = [[NSMutableArray alloc] init];
     }
@@ -27,24 +27,25 @@
     return self.list.count;
 }
 
-- (void) addCoupon:(Coupon *)c{
+- (void)addCoupon:(Coupon *)c{
     [self.list addObject:c];
     NSLog(@"AddCoupon...");
 }
 
-- (void) removeCoupon:(Coupon *)c{
+- (void)removeCoupon:(Coupon *)c{
     [self.list removeObject:c];
 }
 
-- (NSArray *) getAll{
+- (NSArray *)getAll{
     return self.list;
 }
 
--(Coupon *) getCoupon:(NSInteger)index{
+-(Coupon *)getCoupon:(NSInteger)index{
     NSLog(@"getCoupon...");
     return [self.list objectAtIndex:index];
-    
 }
+
+
 
 
 @end

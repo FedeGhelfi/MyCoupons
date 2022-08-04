@@ -27,17 +27,21 @@
     self.LabelCompanyName.text = self.coupon.companyName;
     self.LabelCode.text = self.coupon.code;
     
+    if ([self.coupon isExpired] == NO){
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"dd-MM-yyyy";
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-   // dateFormatter.dateFormat = @"yyyy-MM-dd";
-    dateFormatter.dateFormat = @"dd-MM-yyyy";
-    self.LabelDate.text = [dateFormatter stringFromDate:self.coupon.expirationDate];
-    NSLog(@"expiration date: %@",self.coupon.expirationDate);
+        self.LabelDate.text = [dateFormatter stringFromDate:self.coupon.expirationDate];
+    }
+    else {
+        self.LabelDate.textColor = [UIColor redColor];
+        self.LabelDate.text = @"SCADUTO!";
+    }
     
-   
-     
      [self printCode];
 }
+
 
 - (void)printCode {
     if ([self.coupon.codeFormat isEqualToString:@"BARCODE"]){

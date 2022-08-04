@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
                 expirationDate:(NSDate *)expirationDate;
 
 -(NSString *) displayCoupon;
+-(BOOL)isExpired;
 
 @property(nonatomic, strong) NSString *couponName; // identificativo del coupon
 @property(nonatomic, strong) NSString *companyName;

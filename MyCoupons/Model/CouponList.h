@@ -13,12 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CouponList : NSObject
 
-- (long) size; // dimensione collezione
-- (void) addCoupon:(Coupon *)c;
-- (void) removeCoupon:(Coupon *)c;
-- (Coupon *) getCoupon:(NSInteger)index;
-- (NSArray *) getAll;
-
+- (long)size; // dimensione collezione
+- (void)addCoupon:(Coupon *)c;
+- (void)removeCoupon:(Coupon *)c;
+- (Coupon *)getCoupon:(NSInteger)index;
+- (NSArray *)getAll;
 
 @end
 
