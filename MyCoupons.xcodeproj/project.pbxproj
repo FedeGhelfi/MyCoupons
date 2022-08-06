@@ -11,6 +11,7 @@
 		EB18F22928904D3700E76750 /* AddCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB18F22828904D3700E76750 /* AddCouponViewController.m */; };
 		EB2079192897FE4900815BCC /* ChoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2079182897FE4900815BCC /* ChoiceViewController.m */; };
 		EB4B567C288ECBB30081C977 /* Coupon.m in Sources */ = {isa = PBXBuildFile; fileRef = EB4B567B288ECBB30081C977 /* Coupon.m */; };
+		EB547AB3289C0EBE00DBA492 /* ScanCouponViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB547AB2289C0EBE00DBA492 /* ScanCouponViewController.m */; };
 		EB8CE6CA288FD84D007D4486 /* CouponList.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8CE6C9288FD84D007D4486 /* CouponList.m */; };
 		EBB2E1B8288EC261008D5681 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB2E1B7288EC261008D5681 /* AppDelegate.m */; };
 		EBB2E1BB288EC261008D5681 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB2E1BA288EC261008D5681 /* SceneDelegate.m */; };
@@ -30,6 +31,8 @@
 		EB2079182897FE4900815BCC /* ChoiceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChoiceViewController.m; sourceTree = "<group>"; };
 		EB4B567A288ECBB30081C977 /* Coupon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Coupon.h; sourceTree = "<group>"; };
 		EB4B567B288ECBB30081C977 /* Coupon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Coupon.m; sourceTree = "<group>"; };
+		EB547AB1289C0EBE00DBA492 /* ScanCouponViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanCouponViewController.h; sourceTree = "<group>"; };
+		EB547AB2289C0EBE00DBA492 /* ScanCouponViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanCouponViewController.m; sourceTree = "<group>"; };
 		EB8CE6C8288FD84D007D4486 /* CouponList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CouponList.h; sourceTree = "<group>"; };
 		EB8CE6C9288FD84D007D4486 /* CouponList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CouponList.m; sourceTree = "<group>"; };
 		EBB2E1B3288EC261008D5681 /* MyCoupons.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCoupons.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +108,8 @@
 				EBF28C9328914662007A4466 /* CouponDetailViewController.m */,
 				EB2079172897FE4900815BCC /* ChoiceViewController.h */,
 				EB2079182897FE4900815BCC /* ChoiceViewController.m */,
+				EB547AB1289C0EBE00DBA492 /* ScanCouponViewController.h */,
+				EB547AB2289C0EBE00DBA492 /* ScanCouponViewController.m */,
 			);
 			path = MyCoupons;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 				EBF28C9428914662007A4466 /* CouponDetailViewController.m in Sources */,
 				EBB2E1BB288EC261008D5681 /* SceneDelegate.m in Sources */,
 				EB8CE6CA288FD84D007D4486 /* CouponList.m in Sources */,
+				EB547AB3289C0EBE00DBA492 /* ScanCouponViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

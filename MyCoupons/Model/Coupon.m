@@ -38,20 +38,15 @@
     
     NSTimeInterval differenceBetweenDates = [self.expirationDate timeIntervalSinceDate:today];
     
-    // debug
     int numberOfDays = differenceBetweenDates / 86400;
-    
-    
+
     if (numberOfDays < 0){
         return YES;
     }
-        
     else {
         NSLog(@"Mancano %d giorni alla scadenza...",numberOfDays);
         return NO;
     }
-        
-    
 }
 
 @end

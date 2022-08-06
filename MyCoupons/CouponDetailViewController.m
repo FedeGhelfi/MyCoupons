@@ -27,6 +27,14 @@
     self.LabelCompanyName.text = self.coupon.companyName;
     self.LabelCode.text = self.coupon.code;
     
+    [self printExpirationDate];
+    [self printCode];
+}
+
+
+- (void)printExpirationDate {
+
+    // se non è scaduto, formatta la data e la stampa
     if ([self.coupon isExpired] == NO){
         
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -34,12 +42,13 @@
     
         self.LabelDate.text = [dateFormatter stringFromDate:self.coupon.expirationDate];
     }
+    
+    // altrimenti stampa "SCADUTO" in rosso
     else {
         self.LabelDate.textColor = [UIColor redColor];
         self.LabelDate.text = @"SCADUTO!";
     }
     
-     [self printCode];
 }
 
 
@@ -105,7 +114,6 @@
     [qrCodeFilter setValue:data forKey:@"inputMessage"];
     // error correction rate
     [qrCodeFilter setValue:@"H" forKey:@"inputCorrectionLevel"];
-    
     
     return qrCodeFilter.outputImage;
 }

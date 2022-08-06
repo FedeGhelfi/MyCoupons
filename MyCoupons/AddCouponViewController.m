@@ -34,6 +34,7 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     NSLog(@"textFieldShouldBeginEditing");
     
+    // cambio colore ai textfield
     textField.backgroundColor = [UIColor colorWithRed:220.0f/255.0f green:220.0f/255.0f blue:220.0f/255.0f alpha:0.3f];
     return YES;
 }
@@ -78,8 +79,6 @@
         // notifica di aggiunta coupon
         [[NSNotificationCenter defaultCenter] postNotificationName:@"AddNewCoupon" object:self userInfo:info];
     
-        NSLog(@"Pressed Save");
-    
         // prendo tutto lo stack dei viewController
         NSArray *viewcontrollers = [self.navigationController viewControllers];
     
@@ -101,8 +100,6 @@
             string = @"";
             break;
     }
-    
-    NSLog(@"Scelta: %@", string);
     return string;
 }
 
@@ -125,6 +122,5 @@
     [alert addAction:defaultAction];
     return alert;
 }
-
 
 @end
