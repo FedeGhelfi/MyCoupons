@@ -25,11 +25,6 @@
     // alloco la lista di coupon
     self.coupons = [[CouponList alloc] init];
     
-    // provo ad aggiungere alla lista: FUNZIONA
-    /*
-    [self.coupons addCoupon:[[Coupon alloc] initWithCouponName:@"Biscotti" CompanyName:@"Conad" code:@"56839G" codeFormat:@"QRCODE"]];
-    [self.coupons addCoupon:[[Coupon alloc] initWithCouponName:@"Detersivi" CompanyName:@"Tigotà" code:@"FF5660" codeFormat:@"BARCODE"]];
-    */
     
     // quando verrà inserita una nuova carta verrà inviato un messaggio
     // che invocherà il metodo corretto

@@ -51,7 +51,7 @@
     
 }
 
-
+// stampa del formato grafico del codice
 - (void)printCode {
     if ([self.coupon.codeFormat isEqualToString:@"BARCODE"]){
         CIImage *barcode= [self generateBarCode];

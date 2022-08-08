@@ -87,6 +87,7 @@
     }
 }
 
+// selezione del formato del codice tramite segmented control
 - (NSString *)whichCodeFormat:(UISegmentedControl *)sc {
     NSString *string = [[NSString alloc] init];
     switch(sc.selectedSegmentIndex) {

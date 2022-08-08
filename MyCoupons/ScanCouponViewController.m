@@ -8,23 +8,21 @@
 
 #import "ScanCouponViewController.h"
 #import "Coupon.h"
-#import <AVFoundation/AVFoundation.h>
 
-@interface ScanCouponViewController () <AVCaptureMetadataOutputObjectsDelegate>
+
+@interface ScanCouponViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *CouponNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *CompanyNameTextField;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *ChoiceCodeFormat;
 @property (weak, nonatomic) IBOutlet UIDatePicker *expirationDatePicker;
-@property (nonatomic, strong) NSString *decodedQR;
 
-@property (nonatomic, strong) AVCaptureVideoPreviewLayer *previewLayer;
-@property (nonatomic, strong) CALayer *targetLayer;
-@property (nonatomic, strong) AVCaptureSession *captureSession;
-@property (nonatomic, strong) NSMutableArray *codeObjects; // per memorizzare i metatadataObject
+@property (weak, nonatomic) IBOutlet UILabel *LabelDisplayCode;
 
 
-@property(nonatomic) BOOL isReading;
+@property (nonatomic, strong) NSString *decodedCode; // codice decodificato
+@property (nonatomic, strong) NSString *decodedCodeFormat; // formato codice decodificato
+
 
 @end
 
@@ -36,107 +34,38 @@
     self.CouponNameTextField.delegate = self;
     self.CompanyNameTextField.delegate = self;
     
-    self.isReading = NO;
-    
-    self.captureSession = nil;
+    // quando verrà inserita una nuova carta verrà inviato un messaggio
+    // che invocherà il metodo corretto
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveDecodedCode:) name:@"SaveCode" object:nil];
 
 }
 
-/* ------------------------------------ */
-// PARTE DI SCANSIONE
 
 
-- (BOOL)startReading {
+- (void)saveDecodedCode:(NSNotification *)notification {
     
-    NSLog(@"Sono in start reading");
-    NSError *error;
+    self.decodedCode = [notification.userInfo objectForKey:@"DecodedCode"];
+    self.decodedCodeFormat = [notification.userInfo objectForKey:@"FormatCode"];
     
-    AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice error:&error];
-    
-    if(!deviceInput) {
-        NSLog(@"Error %@", error.localizedDescription);
-        return NO;
-    }
-    
-    self.captureSession = [[AVCaptureSession alloc]init];
-    [self.captureSession addInput:deviceInput];
-    
-    NSLog(@"Ho aggiunto dev input a capture session");
-    
-    AVCaptureMetadataOutput *capturedMetadataOutput = [[AVCaptureMetadataOutput alloc] init];
-    [self.captureSession addOutput:capturedMetadataOutput];
-    
-    dispatch_queue_t dispatchQueue;
-    dispatchQueue = dispatch_queue_create("myQueue", NULL);
-    [capturedMetadataOutput setMetadataObjectsDelegate:self queue:dispatchQueue];
-    [capturedMetadataOutput setMetadataObjectTypes:@[AVMetadataObjectTypeQRCode,AVMetadataObjectTypeEAN13Code]];
-    
-    self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
-    
-    [self.previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    //[self.previewLayer setFrame:self._viewPreview.layer.bounds];
-    
-   // [self.viewPreview.layer addSublayer:self.pre];
-    
-    [self.captureSession startRunning];
-    
-    
-    return YES;
-}
-
-
-
-
-// metodo che viene invocato ogni volta che viene localizzato un oggetto di tipo specificato
-- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
-   
-    //self.codeObjects = nil;
-    
-    for (AVMetadataObject *metadataObject in metadataObjects) {
+    // tocco la UI solo dentro alla coda principale di esecuzione
+    dispatch_async(dispatch_get_main_queue(), ^{
+       self.LabelDisplayCode.text = self.decodedCode;
         
-        if ([metadataObject.type isEqualToString:AVMetadataObjectTypeQRCode] || [metadataObject.type isEqualToString:AVMetadataObjectTypeEAN13Code]){
-                
-            AVMetadataMachineReadableCodeObject *readableCodeobject = (AVMetadataMachineReadableCodeObject *)metadataObject; // cast
-            NSLog(@"Sono arrivato nel for, la string value vale: %@",readableCodeobject.stringValue);
-            self.decodedQR = readableCodeobject.stringValue;
-            [self stopReading];
+        if ([self.decodedCodeFormat isEqualToString:@"QRCODE"]){
+            self.ChoiceCodeFormat.selectedSegmentIndex = 0;
+        }
+        else {
+            self.ChoiceCodeFormat.selectedSegmentIndex = 1;
         }
         
-    }
-   // [self clearTargetLayer];
-   // [self showDetectedObjects];
-}
-
-- (void)stopReading {
-    [self.captureSession stopRunning];
-    self.captureSession = nil;
-}
-
-- (IBAction)startScanning:(id)sender {
-    NSLog(@"Button start pressed");
-    [self startReading];
+    });
+    
 }
 
 
 
 /* ------------------------------------- */
 
-- (NSString *)whichCodeFormat:(UISegmentedControl *)sc {
-    NSString *string = [[NSString alloc] init];
-    switch(sc.selectedSegmentIndex) {
-        case 0:
-            string = @"QRCODE";
-            break;
-        case 1:
-            string = @"BARCODE";
-            break;
-        default:
-            string = @"";
-            break;
-    }
-    return string;
-}
 
 // controllo sugli input
 - (BOOL)controlTextField:(NSString *)string{
@@ -175,7 +104,7 @@
        }
         // AGGIUNGERE CONTROLLO SU SCANSIONE ?
        else {
-           Coupon *newCoupon = [[Coupon alloc]initWithCouponName:self.CouponNameTextField.text CompanyName:self.CompanyNameTextField.text code:self.decodedQR codeFormat:[self whichCodeFormat:self.ChoiceCodeFormat] expirationDate:self.expirationDatePicker.date];
+           Coupon *newCoupon = [[Coupon alloc]initWithCouponName:self.CouponNameTextField.text CompanyName:self.CompanyNameTextField.text code:self.decodedCode codeFormat:self.decodedCodeFormat expirationDate:self.expirationDatePicker.date];
            
            // dictionary che contiene dati coupon aggiunto
            NSDictionary *info = @{@"AddedCoupon":newCoupon};
