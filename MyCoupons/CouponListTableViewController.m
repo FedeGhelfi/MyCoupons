@@ -68,18 +68,7 @@
     
     Coupon *c = [self.coupons getCoupon:indexPath.row];
     
-    /*
-     PROVE DI MODIFICA STRINGHE
-     
-    NSDictionary *attributes = @{
-        NSFontAttributeName:[UIFont fontWithName:@"Arial" size:16.0],
-        NSForegroundColorAttributeName:[UIColor redColor]
-    };
-    
-    NSAttributedString *text = [[NSAttributedString alloc] initWithString:c.companyName attributes:attributes];
-    */
-    
-    cell.textLabel.textColor = [UIColor purpleColor]; // testo colorato
+   // cell.textLabel.textColor = [UIColor purpleColor]; // testo colorato
     
     // cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     

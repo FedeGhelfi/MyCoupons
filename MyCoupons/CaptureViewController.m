@@ -34,10 +34,13 @@
     [super viewDidLoad];
     
     self.isReading = NO;
-    
     self.captureSession = nil;
-    
     [self startReading];
+    
+    
+    self.ButtonOK.layer.borderWidth = 1;
+    self.ButtonOK.layer.borderColor = [UIColor systemBlueColor].CGColor;
+    self.ButtonOK.layer.cornerRadius = 3;
 }
 
 /* ------------------------------------ */
@@ -49,6 +52,7 @@
     NSLog(@"Sono in start reading");
     NSError *error;
     
+    // aggiungo device di input alla capture session
     AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice error:&error];
     
@@ -62,6 +66,7 @@
     
     NSLog(@"Ho aggiunto dev input a capture session");
     
+    // aggiungo device di output alla capture session
     AVCaptureMetadataOutput *capturedMetadataOutput = [[AVCaptureMetadataOutput alloc] init];
     [self.captureSession addOutput:capturedMetadataOutput];
     
@@ -83,7 +88,6 @@
     self.targetLayer = [CALayer layer];
     self.targetLayer.frame = self.viewPreview.layer.bounds;
     [self.viewPreview.layer addSublayer:self.targetLayer];
-    
     
     
     [self.captureSession startRunning];
@@ -130,13 +134,9 @@
             self.decodedCodeFormat = @"BARCODE";
             
             self.LabelCode.text = self.decodedCode;
-            
-            // [self stopReading
+        
         }
-        
-        
         [self showButtonAndCode];
-        
     }
     
     [self clearTargetLayer];
@@ -145,7 +145,9 @@
 }
 
 - (void)showButtonAndCode{
+    // mostro il codice decodificato
     self.LabelCode.text = self.decodedCode;
+    // abilito il bottone
     self.ButtonOK.enabled = YES;
 
 }

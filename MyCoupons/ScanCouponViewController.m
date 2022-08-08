@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *expirationDatePicker;
 
 @property (weak, nonatomic) IBOutlet UILabel *LabelDisplayCode;
+@property (weak, nonatomic) IBOutlet UIButton *ScanButton;
 
 
 @property (nonatomic, strong) NSString *decodedCode; // codice decodificato
@@ -33,6 +34,12 @@
     
     self.CouponNameTextField.delegate = self;
     self.CompanyNameTextField.delegate = self;
+    
+    // configuro il bottone SCAN
+    self.ScanButton.layer.borderWidth = 1;
+    self.ScanButton.layer.borderColor = [UIColor systemBlueColor].CGColor;
+    self.ScanButton.layer.cornerRadius = 3;
+    
     
     // quando verrà inserita una nuova carta verrà inviato un messaggio
     // che invocherà il metodo corretto
