@@ -22,7 +22,7 @@
     
     self.title = @"My Coupons";
     
-    // alloco la lista di coupon
+    // alloco e inizializzo la lista di coupon
     self.coupons = [[CouponList alloc] init];
     
     
@@ -36,9 +36,13 @@
 
 - (void)addNewCoupon:(NSNotification *)notification {
     
+    // dalla notifica ottengo le informazioni del coupon da aggiungere
     [self.coupons addCoupon:[notification.userInfo objectForKey:@"AddedCoupon"]];
+    
+    // debug
     NSLog(@"Size: %ld",self.coupons.size);
     
+    // aggiorno la tabella
     [self.tableView reloadData];
     
 }
@@ -46,9 +50,13 @@
 
 - (void)removeCoupon:(NSNotification *)notification {
     
+    // dalla notifica ottengo le informazioni del coupon da rimuovere
     [self.coupons removeCoupon:[notification.userInfo objectForKey:@"RemoveCoupon"]];
+    
+    // debug
     NSLog(@"Size: %ld", self.coupons.size);
     
+    // aggiorno la tabella
     [self.tableView reloadData];
 }
 
@@ -66,11 +74,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CouponCell" forIndexPath:indexPath];
     
+    // ottengo il coupon
     Coupon *c = [self.coupons getCoupon:indexPath.row];
     
-   // cell.textLabel.textColor = [UIColor purpleColor]; // testo colorato
-    
-    // cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     
     cell.textLabel.font = [UIFont fontWithName:@"Arial" size:18.0]; // modifico il font
     cell.textLabel.text = c.couponName;

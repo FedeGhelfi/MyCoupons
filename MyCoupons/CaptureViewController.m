@@ -125,7 +125,7 @@
             self.LabelCode.text = self.decodedCode;
             // [self stopReading];
         }
-        else if ([metadataObject.type isEqualToString:AVMetadataObjectTypeEAN13Code]) {
+        else if ([metadataObject.type isEqualToString:AVMetadataObjectTypeEAN13Code]) { // è un Barcode
             
             AVMetadataMachineReadableCodeObject *readableCodeobject = (AVMetadataMachineReadableCodeObject *)metadataObject; // cast
             self.obj = [self.previewLayer transformedMetadataObjectForMetadataObject:metadataObject];
@@ -158,7 +158,7 @@
 }
 
 
-
+// localizza oggetti durante la scansione
 - (void)showDetectedObjects {
     if (!self.obj){
         return;

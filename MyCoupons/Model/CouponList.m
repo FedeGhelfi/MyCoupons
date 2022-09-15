@@ -23,7 +23,7 @@
     return self;
 }
 
-- (long) size{
+- (long)size{
     return self.list.count;
 }
 

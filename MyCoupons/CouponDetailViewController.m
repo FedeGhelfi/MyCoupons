@@ -118,7 +118,7 @@
     return qrCodeFilter.outputImage;
 }
 
-
+// genera BARCODE 
 -(CIImage *)generateBarCode{
     
     NSData *data = [self.coupon.code dataUsingEncoding:NSASCIIStringEncoding];
